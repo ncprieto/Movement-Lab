@@ -32,7 +32,7 @@ class Velocity extends Phaser.Scene {
         // set up my alien son 👽
         // see: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/arcade-gameobject/#sprite-object
         this.alien = this.physics.add.sprite(game.config.width/2, game.config.height/6, 'platformer_atlas', 'front').setScale(SCALE);
-        this.alien.setCollideWorldBounds(true);
+        //this.alien.setCollideWorldBounds(true);
 
         // add arrow key graphics as UI
         this.upKey = this.add.sprite(64, 32, 'arrowKey');
@@ -60,6 +60,7 @@ class Velocity extends Phaser.Scene {
     update() {
         // check keyboard input
         if(cursors.left.isDown) {
+            this.alien.setVelocityX(-350);
             // set alien velocity here (.setVelocityX())
             // A negative value moves left
 
@@ -72,6 +73,7 @@ class Velocity extends Phaser.Scene {
             this.leftKey.tint = 0xFACADE;   // tint key
 
         } else if(cursors.right.isDown) {
+            this.alien.setVelocityX(350);
             // Set alien velocity here (.setVelocityX())
             // A positive value moves right
 
@@ -82,6 +84,7 @@ class Velocity extends Phaser.Scene {
             this.rightKey.tint = 0xFACADE;  // tint key
 
         } else {
+            this.alien.setVelocityX(0);
             // Set alien velocity to zero here (.setVelocityX())
 
 
@@ -95,6 +98,6 @@ class Velocity extends Phaser.Scene {
         this.physics.world.wrap(this.cloud01, this.cloud01.width/2);
         this.physics.world.wrap(this.cloud02, this.cloud02.width/2);
         // add alien world wrap line here
-
+        this.physics.world.wrap(this.alien, 0);
     }
 }
