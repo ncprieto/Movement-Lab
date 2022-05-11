@@ -49,7 +49,7 @@ class Velocity extends Phaser.Scene {
         cursors = this.input.keyboard.createCursorKeys();
 
         // add physics collider
-        // this.physics.add.collider(this.alien, this.ground);
+        this.physics.add.collider(this.alien, this.ground);
 
         // set up Scene switcher
         // note: this style of scene switching is for demo purposes only
